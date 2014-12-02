@@ -1,10 +1,12 @@
 class TodosController < ApplicationController
   before_action :set_todo, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
 
   # GET /todos
   # GET /todos.json
   def index
-    @todos = Todo.all
+    @todos = current_user.todos
+    # @todos = Todo.where( user_id: current_user.id )
   end
 
   # GET /todos/1
@@ -25,7 +27,7 @@ class TodosController < ApplicationController
   # POST /todos.json
   def create
     @todo = Todo.new(todo_params)
-
+    @todo.user_id = current_user.id
     respond_to do |format|
       if @todo.save
         format.html { redirect_to @todo, notice: 'Todo was successfully created.' }
@@ -62,6 +64,13 @@ class TodosController < ApplicationController
   end
 
   private
+    def require_login
+      unless current_user
+        flash[:notice] = "Please login to access that page"
+        return redirect_to root_path
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_todo
       @todo = Todo.find(params[:id])
