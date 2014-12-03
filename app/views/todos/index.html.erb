@@ -1,4 +1,6 @@
-<h1>Current ToDo Lists</h1>
+<div class="jumbotron">
+<h1>My To-Do List</h1>
+</div>
 <div class="col-md-6">
 <table class="table table-striped">
   <thead>
@@ -22,6 +24,7 @@
   </tbody>
 </table>
 </div>
-<br>
 
-<%= link_to 'New Todo', new_todo_path %>
+<div class="col-md-4">
+<%= link_to 'New Todo', new_todo_path, class: 'btn btn-primary' %>
+</div>

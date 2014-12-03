@@ -1,2 +1,18 @@
-<h1>Welcome to Bloccitoff!</h1>
-<p>This is the home page for Bloccitoff.</p>
+<br/>
+<div class="jumbotron">
+  <h1>Welcome to Bloccitoff!</h1>
+  <p>A self-destructing to-do list to keep you focused on the things that really matter.</p>
+    <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or
+    <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> for your free account today!
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <h2>Keep To-Do Lists Manageable</h2>
+    <p>Bloccitoff will aim to keep your busy To-Do list manageable by automatically deleting to-do items that have not been completed after 7 days.</p>
+  </div>
+  <div class="col-md-6">
+    <h2>Stay Focused on What Matters</h2>
+    <p>To-Do lists are notorious for collecting junk. By deleting items that are not important enough to be completed in 7 days, Bloccitoff eliminates items that do not belong on your To-Do list.</p>
+  </div>
+</div>
