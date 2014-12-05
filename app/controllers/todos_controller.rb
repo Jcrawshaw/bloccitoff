@@ -63,6 +63,18 @@ class TodosController < ApplicationController
     end
   end
 
+  def complete
+  
+    params[:todos_checkbox].each do |check|
+      todo_id = check
+      t = Todo.find_by_id(todo_id)
+      #t.update_attribute(:completed, true)
+      t.destroy
+    end
+    redirect_to :action => 'index'
+  end
+
+
   private
     def require_login
       unless current_user

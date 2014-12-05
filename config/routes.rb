@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :todos
 
+  match 'todos/complete' => 'todos#complete', :via => :post
+
   get 'welcome/about'
   get 'welcome/index'
 
