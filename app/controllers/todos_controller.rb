@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-  before_action :set_todo, only: [:show, :edit, :update, :destroy]
+  before_action :set_todo, only: [:show, :edit, :update, :destroy, :done]
   before_action :require_login
 
   # GET /todos
@@ -63,6 +63,11 @@ class TodosController < ApplicationController
     end
   end
 
+  def done
+    @todo.update_attribute(:completed, true)
+    redirect_to action: :index
+  end
+  
   def complete
   
     params[:todos_checkbox].each do |check|

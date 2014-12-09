@@ -1,6 +1,7 @@
 <div class="jumbotron">
 <h1>My To-Do List</h1>
 </div>
+<div class="container">
 <div class="col-md-8">
 <table class="table table-striped">
   <thead>
@@ -8,7 +9,8 @@
       <th>Task</th>
       <th>Description</th>
       <th>Expires In</th>
-      <th colspan="6"></th>
+      <th>Mark Complete</th>
+      <th>Remove Task</th>  
     </tr>
   </thead>
 
@@ -17,21 +19,22 @@
     <% @todos.each do |todo| %>
       <tr>
         <% if todo.completed == true %>
-        <td style="color:grey;"><%= check_box_tag "todos_checkbox[]", todo.id %><strike><%= todo.title %></strike></td>
+        <td style="color:grey;"><strike><%= todo.title %></strike></td>
+        <td style="color:grey;"><strike><%= todo.description %></strike></td>
         <% else %>
-          <td><%= check_box_tag "todos_checkbox[]", todo.id %><%= todo.title %></td>
+          <td><%= todo.title %></td>
+          <td><%= todo.description %></td>
           <% end %>
-        <td><%= todo.description %></td>
-        <td><%= distance_of_time_in_words_to_now(todo.countdown) %>
-        <td><%= link_to 'Show', todo %></td>
-        <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
+        
+        <td><%= todo.days_left.to_i %> days</td>
+          <td><%= link_to "Completed", done_todo_path(todo), method: :post %></td>)
         <td><%= link_to 'Delete', todo, method: :delete, data: { confirm: 'Remove task from To-do list?' } %></td>
       </tr>
-    <% end %>
-    <%= submit_tag("Update List", class: 'btn btn-success') %>
+      <% end %>
     <% end %>
   </tbody>
 </table>
+</div>
 </div>
 
 <div class="col-md-4">

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :todos
+  resources :todos do
+    member do
+      post 'done'
+    end
+  end
 
   match 'todos/complete' => 'todos#complete', :via => :post
 
