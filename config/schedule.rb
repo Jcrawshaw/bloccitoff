@@ -1,5 +1,5 @@
-every :day, :at => '1:17pm' do
-  rake delete_items
+every :day, :at => '1:30pm' do
+  rake "delete_items"
 end
 
 # Use this file to easily define all of your cron jobs.
