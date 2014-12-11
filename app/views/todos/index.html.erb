@@ -1,43 +1,42 @@
 <div class="jumbotron">
-<h1>My To-Do List</h1>
+  <h1>My To-Do List</h1>
 </div>
 
 <div class="container">
-<div class="col-md-8">
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Task</th>
-      <th>Description</th>
-      <th>Expires In</th>
-      <th>Mark Complete</th>
-      <th>Remove Task</th>  
-    </tr>
-  </thead>
+  <div class="col-md-8">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Description</th>
+          <th>Expires In</th>
+          <th>Mark Complete</th>
+          <th>Remove Task</th>  
+        </tr>
+      </thead>
 
-  <tbody>
+      <tbody>
     
-    <% @todos.each do |todo| %>
-      <tr>
-        <% if todo.completed == true %>
-        <td style="color:grey;"><strike><%= todo.title %></strike></td>
-        <td style="color:grey;"><strike><%= todo.description %></strike></td>
-        <% else %>
-          <td><%= todo.title %></td>
-          <td><%= todo.description %></td>
-          <% end %>
+        <% @todos.each do |todo| %>
+          <tr>
+            <% if todo.completed == true %>
+              <td style="color:grey;"><strike><%= todo.title %></strike></td>
+              <td style="color:grey;"><strike><%= todo.description %></strike></td>
+            <% else %>
+              <td><%= todo.title %></td>
+              <td><%= todo.description %></td>
+            <% end %>
         
-        <td><%= todo.days_left.to_i %> days</td>
-          <td><%= link_to "Completed", done_todo_path(todo), method: :post %></td>)
-        <td><%= link_to 'Delete', todo, method: :delete, data: { confirm: 'Remove task from To-do list?' } %></td>
-      </tr>
-      <% end %>
-    
-  </tbody>
-</table>
-</div>
+            <td><%= todo.days_left.to_i %> days</td>
+            <td><%= link_to "Completed", done_todo_path(todo), method: :post %></td>)
+            <td><%= link_to 'Delete', todo, method: :delete, data: { confirm: 'Remove task from To-do list?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <div class="col-md-4">
-<%= link_to 'New Task', new_todo_path, class: 'btn btn-primary' %>
+  <%= link_to 'New Task', new_todo_path, class: 'btn btn-primary' %>
 </div>
