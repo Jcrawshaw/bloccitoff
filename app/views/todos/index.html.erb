@@ -28,7 +28,7 @@
             <% end %>
         
             <td><%= todo.days_left.to_i %> days</td>
-            <td><%= link_to "Completed", done_todo_path(todo), method: :post %></td>)
+            <td><%= link_to "Completed", done_todo_path(todo), method: :post %></td>
             <td><%= link_to 'Delete', todo, method: :delete, data: { confirm: 'Remove task from To-do list?' } %></td>
           </tr>
         <% end %>
